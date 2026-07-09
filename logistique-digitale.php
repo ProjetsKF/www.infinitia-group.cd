@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Logistique Digitale | INFINITIA GROUP SARLU</title>
+    <meta name="description" content="Solutions de logistique digitale pour la coordination, la traçabilité et le suivi des opérations.">
+    <meta name="keywords" content="logistique digitale, transport, traçabilité, opérations, INFINITIA GROUP">
+
+    <!-- Favicons -->
+    <link href="assets/img/ico.ico" rel="icon">
+    <link href="assets/img/ico.ico" rel="apple-touch-icon">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+
+    <!-- Main CSS File -->
+    <link href="assets/css/main.css" rel="stylesheet">
+</head>
+
+<body class="projects-page">
+    <?php include("menu.php"); ?>
+
+    <main class="main">
+        <div class="team-page-title">
+            <div class="container" data-aos="fade-up">
+                <h1>Logistique digitale</h1>
+                <ul class="team-breadcrumb">
+                    <li><a href="index.php">Accueil</a></li>
+                    <li>Logistique digitale</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Project Details Section -->
+        <section class="project-details section">
+            <div class="container" data-aos="fade-up">
+                <div class="row gy-5">
+                    <!-- Main Content -->
+                    <div class="col-lg-8">
+                        <div class="project-details-slider">
+                            <img src="assets/img/log.png"
+                                 class="img-fluid rounded"
+                                 alt="Logistique digitale">
+                        </div>
+
+                        <div class="project-description mt-4">
+                            <h2>Solutions Numériques pour la Logistique et le Transport</h2>
+
+                            <p>
+                                INFINITIA GROUP SARLU accompagne les organisations dans la digitalisation de leurs flux logistiques afin d’améliorer la coordination, la traçabilité, le contrôle des opérations et la qualité du service rendu aux clients.
+                            </p>
+
+                            <h4>Objectifs du Service</h4>
+                            <ul>
+                                <li>Améliorer la coordination des ressources et des équipes</li>
+                                <li>Suivre les opérations logistiques avec plus de visibilité</li>
+                                <li>Réduire les retards, pertes d’informations et erreurs de suivi</li>
+                                <li>Mettre en place des outils de pilotage opérationnel</li>
+                            </ul>
+
+                            <h4>Fonctionnalités Clés</h4>
+                            <ul>
+                                <li>Suivi des demandes, livraisons et interventions</li>
+                                <li>Gestion des ressources, véhicules, équipes ou prestataires</li>
+                                <li>Traçabilité des opérations et des étapes de traitement</li>
+                                <li>Tableaux de bord et rapports opérationnels</li>
+                                <li>Notifications de suivi et alertes</li>
+                                <li>Historique des activités et indicateurs de performance</li>
+                            </ul>
+
+                            <h4>Technologies Utilisées</h4>
+                            <p>
+                                Les solutions logistiques sont construites autour d’outils web et mobiles simples à utiliser :
+                            </p>
+
+                            <ul>
+                                <li>Plateformes web responsive pour le pilotage des opérations</li>
+                                <li>Bases de données pour centraliser les flux et historiques</li>
+                                <li>Tableaux de bord pour analyser les performances</li>
+                                <li>Modules de suivi adaptés aux besoins de chaque organisation</li>
+                            </ul>
+
+                            <h4>Impact & Valeur Ajoutée</h4>
+                            <p>
+                                La logistique digitale permet de gagner en précision, de mieux organiser les équipes, de renforcer la traçabilité et de prendre des décisions rapides à partir de données fiables.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Sidebar -->
+                    <div class="col-lg-4">
+                        <div class="project-info-box p-4 shadow-sm rounded">
+                            <h3>Informations du Service</h3>
+
+                            <ul class="list-unstyled mt-3">
+                                <li><strong>Catégorie :</strong> Logistique & Transport</li>
+                                <li><strong>Cible :</strong> Entreprises, services terrain et opérateurs</li>
+                                <li><strong>Livrable :</strong> Outil de suivi logistique</li>
+                                <li><strong>Statut :</strong> Service disponible</li>
+                            </ul>
+
+                            <div class="mt-4">
+                                <a href="contact.php" class="btn btn-primary w-100">
+                                    Discuter de votre projet
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="mt-4 p-4 shadow-sm rounded">
+                            <h4>Pourquoi cette expertise est stratégique ?</h4>
+                            <p>
+                                Une logistique bien digitalisée réduit les pertes d’informations, améliore les délais et donne aux responsables une vision claire des opérations.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Call To Action -->
+        <section class="cta-container text-center mt-5">
+            <div class="container">
+                <h3>Vous souhaitez digitaliser vos opérations logistiques ?</h3>
+                <p>INFINITIA GROUP SARLU vous aide à structurer vos flux avec des outils numériques adaptés.</p>
+                <a href="contact.php" class="btn btn-primary">Contactez-nous</a>
+            </div>
+        </section>
+    </main>
+
+    <?php include("pied.php"); ?>
+
+    <!-- Scroll Top -->
+    <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+    <!-- Preloader -->
+    <div id="preloader"></div>
+
+    <!-- Vendor JS Files -->
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendor/php-email-form/validate.js"></script>
+    <script src="assets/vendor/aos/aos.js"></script>
+    <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+
+    <!-- Main JS File -->
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>
