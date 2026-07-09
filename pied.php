@@ -15,7 +15,7 @@
           <p class="mb-4">INFINITIA GROUP SARLU concoit des solutions numeriques utiles, fiables et evolutives pour connecter les entreprises, les services, la logistique, l'agriculture et les communautes.</p>
 
           <div class="newsletter-form">
-            <h5>Restez informe</h5>
+            <h5>Restez informé</h5>
             <form action="forms/newsletter.php" method="post" class="php-email-form">
               <div class="input-group">
                 <input type="email" name="email" class="form-control" placeholder="Votre adresse e-mail" required="">
@@ -115,7 +115,7 @@
             <a href="contact.php">Assistance</a>
           </div>
           <div class="credits">
-            Propulse par INFINITIA GROUP SARLU
+            Propulsé par INFINITIA GROUP SARLU
           </div>
         </div>
       </div>
