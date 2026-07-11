@@ -56,7 +56,7 @@ if (isset($_SESSION['contact_error'])) {
                   <div class="info-box">
                     <div class="icon-wrap"><i class="bi bi-envelope-heart"></i></div>
                     <h5>Ecrivez-nous</h5>
-                    <p>infinitiagroupsarlu@gmail.com</p>
+                    <p>info@infinitia-group.cd</p>
                     <span class="availability">Reponse selon la priorite du projet</span>
                   </div>
                 </div>
@@ -74,7 +74,7 @@ if (isset($_SESSION['contact_error'])) {
                   <div class="info-box">
                     <div class="icon-wrap"><i class="bi bi-pin-map"></i></div>
                     <h5>Localisation</h5>
-                    <p>Lubumbashi, RDC</p>
+                    <p>Kolwezi, RDC</p>
                     <span class="availability">Interventions locales et a distance</span>
                   </div>
                 </div>
