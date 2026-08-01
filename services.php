@@ -1,3 +1,6 @@
+<?php
+$currentPage = 'services';
+?>
 <!DOCTYPE html>
 <html lang="fr">
 

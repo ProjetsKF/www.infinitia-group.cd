@@ -1,3 +1,6 @@
+<?php
+$currentPage = 'projet-agrichain';
+?>
 <!DOCTYPE html>
 <html lang="fr">
 

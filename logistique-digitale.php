@@ -1,3 +1,6 @@
+<?php
+$currentPage = 'logistique-digitale';
+?>
 <!DOCTYPE html>
 <html lang="fr">
 

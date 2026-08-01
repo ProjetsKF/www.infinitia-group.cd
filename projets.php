@@ -1,3 +1,6 @@
+<?php
+$currentPage = 'projets';
+?>
 <!DOCTYPE html>
 <html lang="fr">
 

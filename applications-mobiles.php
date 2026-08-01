@@ -1,3 +1,6 @@
+<?php
+$currentPage = 'applications-mobiles';
+?>
 <!DOCTYPE html>
 <html lang="fr">
 

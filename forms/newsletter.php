@@ -47,7 +47,7 @@ function generateUnsubscribeToken($conn)
 
 /*
  * Chaque newsletter envoyée plus tard devra contenir un lien de désabonnement
- * de ce type : https://www.infinitia-group.cd/desabonnement.php?token=TOKEN_DE_L_ABONNE
+ * de ce type : https://www.infinitia-group.com/desabonnement.php?token=TOKEN_DE_L_ABONNE
  *
  * Requête à utiliser pour récupérer uniquement les abonnés actifs :
  * SELECT email, token_desabonnement

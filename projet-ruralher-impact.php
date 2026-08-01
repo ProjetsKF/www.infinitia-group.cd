@@ -1,3 +1,6 @@
+<?php
+$currentPage = 'projet-ruralher-impact';
+?>
 <!DOCTYPE html>
 <html lang="fr">
 

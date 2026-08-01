@@ -3,6 +3,7 @@ if (session_status() == PHP_SESSION_NONE) {
   session_start();
 }
 
+$currentPage = 'contact';
 $contact_success = '';
 $contact_error = '';
 

@@ -1,3 +1,6 @@
+<?php
+$currentPage = 'equipe';
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>

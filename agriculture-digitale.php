@@ -1,3 +1,6 @@
+<?php
+$currentPage = 'agriculture-digitale';
+?>
 <!DOCTYPE html>
 <html lang="fr">
 

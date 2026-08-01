@@ -1,3 +1,6 @@
+<?php
+$currentPage = 'faq';
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>

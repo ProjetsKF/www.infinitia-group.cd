@@ -1,6 +1,7 @@
 <?php
 require_once 'config/database.php';
 
+$currentPage = 'desabonnement';
 $message = '';
 $message_type = 'danger';
 $token = '';
@@ -64,7 +65,7 @@ if ($token === '' || strlen($token) !== 64 || !ctype_xdigit($token)) {
 
 /*
  * Chaque newsletter doit contenir un lien de désabonnement de ce type :
- * https://www.infinitia-group.cd/desabonnement.php?token=TOKEN_DE_L_ABONNE
+ * https://www.infinitia-group.com/desabonnement.php?token=TOKEN_DE_L_ABONNE
  *
  * Requête à utiliser plus tard pour envoyer uniquement aux abonnés actifs :
  * SELECT email, token_desabonnement

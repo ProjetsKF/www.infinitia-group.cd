@@ -1,3 +1,6 @@
+<?php
+$currentPage = 'a-propos';
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>

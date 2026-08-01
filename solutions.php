@@ -1,3 +1,6 @@
+<?php
+$currentPage = 'solutions';
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>

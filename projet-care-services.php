@@ -1,3 +1,6 @@
+<?php
+$currentPage = 'projet-care-services';
+?>
 <!DOCTYPE html>
 <html lang="fr">
 

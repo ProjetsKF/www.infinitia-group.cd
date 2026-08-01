@@ -1,3 +1,6 @@
+<?php
+$currentPage = 'privacy';
+?>
 <!DOCTYPE html>
 <html lang="fr">
 

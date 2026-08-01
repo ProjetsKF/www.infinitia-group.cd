@@ -1,3 +1,6 @@
+<?php
+$currentPage = 'intelligence-artificielle';
+?>
 <!DOCTYPE html>
 <html lang="fr">
 

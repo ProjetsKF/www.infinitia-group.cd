@@ -1,3 +1,6 @@
+<?php
+$currentPage = 'applications-web';
+?>
 <!DOCTYPE html>
 <html lang="fr">
 
