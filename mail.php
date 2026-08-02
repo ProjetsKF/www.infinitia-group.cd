@@ -69,8 +69,8 @@ if (!load_phpmailer()) {
   redirect_contact('error', 'Le service email est temporairement indisponible.');
 }
 
-if (SMTP_PASSWORD == 'A_REMPLACER_PAR_LE_MOT_DE_PASSE_APPLICATION_GMAIL') {
-  log_mail_error('Mot de passe d application Gmail non configure.');
+if (SMTP_PASSWORD == '') {
+  log_mail_error('Mot de passe SMTP professionnel non configure.');
   redirect_contact('error', 'La configuration email n est pas encore terminee.');
 }
 
@@ -163,11 +163,11 @@ try {
   $mailer = new PHPMailer\PHPMailer\PHPMailer(true);
   $mailer->isSMTP();
   $mailer->Host = SMTP_HOST;
+  $mailer->Port = SMTP_PORT;
   $mailer->SMTPAuth = true;
   $mailer->Username = SMTP_USERNAME;
   $mailer->Password = SMTP_PASSWORD;
-  $mailer->SMTPSecure = 'tls';
-  $mailer->Port = SMTP_PORT;
+  $mailer->SMTPSecure = defined('PHPMailer\\PHPMailer\\PHPMailer::ENCRYPTION_SMTPS') ? PHPMailer\PHPMailer\PHPMailer::ENCRYPTION_SMTPS : 'ssl';
   $mailer->CharSet = 'UTF-8';
   $mailer->isHTML(true);
   $mailer->setFrom(SMTP_FROM_EMAIL, SMTP_FROM_NAME);
