@@ -3,21 +3,25 @@ if (session_status() == PHP_SESSION_NONE) {
   session_start();
 }
 
-function redirect_contact($type, $message)
+function respond_contact($message)
 {
-  if ($type == 'success') {
-    $_SESSION['contact_success'] = $message;
-  } else {
-    $_SESSION['contact_error'] = $message;
-  }
-
-  header('Location: contact.php');
+  header('Content-Type: text/plain; charset=UTF-8');
+  echo $message;
   exit;
 }
 
 function has_header_injection($value)
 {
   return preg_match("/[\r\n]/", $value);
+}
+
+function get_post_value($key)
+{
+  if (!isset($_POST[$key]) || !is_string($_POST[$key])) {
+    return '';
+  }
+
+  return trim($_POST[$key]);
 }
 
 function log_mail_error($message)
@@ -52,45 +56,125 @@ function load_phpmailer()
 }
 
 if ($_SERVER['REQUEST_METHOD'] != 'POST') {
-  redirect_contact('error', 'Veuillez utiliser le formulaire de contact.');
+  respond_contact('Veuillez utiliser le formulaire de contact.');
+}
+
+$turnstile_config_file = dirname(__FILE__) . DIRECTORY_SEPARATOR . 'config' . DIRECTORY_SEPARATOR . 'turnstile.php';
+
+if (!file_exists($turnstile_config_file)) {
+  log_mail_error('Fichier de configuration Turnstile introuvable.');
+  respond_contact('Impossible de vérifier la sécurité du formulaire pour le moment. Veuillez réessayer plus tard.');
+}
+
+require_once $turnstile_config_file;
+
+$turnstile_response = get_post_value('cf-turnstile-response');
+
+if ($turnstile_response == '') {
+  respond_contact('Veuillez valider la vérification de sécurité.');
+}
+
+if (!defined('TURNSTILE_SECRET_KEY') || TURNSTILE_SECRET_KEY == '' || TURNSTILE_SECRET_KEY == 'VOTRE_SECRET_KEY') {
+  log_mail_error('Cle secrete Turnstile non configuree.');
+  respond_contact('Impossible de vérifier la sécurité du formulaire pour le moment. Veuillez réessayer plus tard.');
+}
+
+if (!function_exists('curl_init')) {
+  log_mail_error('Extension cURL indisponible pour la verification Turnstile.');
+  respond_contact('Impossible de vérifier la sécurité du formulaire pour le moment. Veuillez réessayer plus tard.');
+}
+
+$turnstile_data = array(
+  'secret' => TURNSTILE_SECRET_KEY,
+  'response' => $turnstile_response
+);
+
+if (isset($_SERVER['REMOTE_ADDR']) && $_SERVER['REMOTE_ADDR'] != '') {
+  $turnstile_data['remoteip'] = $_SERVER['REMOTE_ADDR'];
+}
+
+$ch = curl_init();
+curl_setopt($ch, CURLOPT_URL, 'https://challenges.cloudflare.com/turnstile/v0/siteverify');
+curl_setopt($ch, CURLOPT_POST, true);
+curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($turnstile_data));
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch, CURLOPT_TIMEOUT, 10);
+
+$turnstile_result = curl_exec($ch);
+$turnstile_http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+$turnstile_curl_error = curl_error($ch);
+curl_close($ch);
+
+if ($turnstile_result === false || $turnstile_http_code < 200 || $turnstile_http_code >= 300) {
+  log_mail_error('Echec de connexion a Turnstile Siteverify : ' . $turnstile_curl_error);
+  respond_contact('Impossible de vérifier la sécurité du formulaire pour le moment. Veuillez réessayer plus tard.');
+}
+
+$turnstile_verification = json_decode($turnstile_result, true);
+
+if (!is_array($turnstile_verification)) {
+  log_mail_error('Reponse Turnstile Siteverify invalide.');
+  respond_contact('Impossible de vérifier la sécurité du formulaire pour le moment. Veuillez réessayer plus tard.');
+}
+
+if (!isset($turnstile_verification['success']) || $turnstile_verification['success'] !== true) {
+  respond_contact('Vérification de sécurité invalide. Veuillez réessayer.');
+}
+
+$request_host = isset($_SERVER['HTTP_HOST']) ? strtolower($_SERVER['HTTP_HOST']) : '';
+$request_host = preg_replace('/:\\d+$/', '', $request_host);
+$remote_address = isset($_SERVER['REMOTE_ADDR']) ? $_SERVER['REMOTE_ADDR'] : '';
+$is_local_host = $request_host == 'localhost'
+  || $request_host == '127.0.0.1'
+  || $request_host == '::1';
+$is_local_address = $remote_address == '127.0.0.1' || $remote_address == '::1';
+$is_local_request = $is_local_host && $is_local_address;
+
+if (!$is_local_request && isset($turnstile_verification['hostname'])) {
+  $verified_hostname = strtolower(trim($turnstile_verification['hostname']));
+  $allowed_hostnames = array('infinitia-group.com', 'www.infinitia-group.com');
+
+  if (!in_array($verified_hostname, $allowed_hostnames, true)) {
+    respond_contact('Vérification de sécurité invalide. Veuillez réessayer.');
+  }
 }
 
 $config_file = dirname(__FILE__) . DIRECTORY_SEPARATOR . 'config' . DIRECTORY_SEPARATOR . 'mail_config.php';
 
 if (!file_exists($config_file)) {
   log_mail_error('Fichier de configuration SMTP introuvable.');
-  redirect_contact('error', 'La configuration email n est pas encore terminee.');
+  respond_contact('Une erreur est survenue lors de l envoi du message. Veuillez reessayer.');
 }
 
 require_once $config_file;
 
 if (!load_phpmailer()) {
   log_mail_error('PHPMailer n a pas pu etre charge.');
-  redirect_contact('error', 'Le service email est temporairement indisponible.');
+  respond_contact('Une erreur est survenue lors de l envoi du message. Veuillez reessayer.');
 }
 
 if (SMTP_PASSWORD == '') {
   log_mail_error('Mot de passe SMTP professionnel non configure.');
-  redirect_contact('error', 'La configuration email n est pas encore terminee.');
+  respond_contact('Une erreur est survenue lors de l envoi du message. Veuillez reessayer.');
 }
 
-$name = isset($_POST['name']) ? trim($_POST['name']) : '';
-$email = isset($_POST['email']) ? trim($_POST['email']) : '';
-$subject = isset($_POST['subject']) ? trim($_POST['subject']) : '';
-$message = isset($_POST['message']) ? trim($_POST['message']) : '';
+$name = get_post_value('name');
+$email = get_post_value('email');
+$subject = get_post_value('subject');
+$message = get_post_value('message');
 
 if ($name == '' || $email == '' || $subject == '' || $message == '') {
-  redirect_contact('error', 'Veuillez remplir tous les champs du formulaire.');
+  respond_contact('Veuillez remplir tous les champs du formulaire.');
 }
 
 if (has_header_injection($name) || has_header_injection($email) || has_header_injection($subject)) {
-  redirect_contact('error', 'Votre message contient des donnees non autorisees.');
+  respond_contact('Votre message contient des donnees non autorisees.');
 }
 
 $email = filter_var($email, FILTER_SANITIZE_EMAIL);
 
 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-  redirect_contact('error', 'Veuillez saisir une adresse e-mail valide.');
+  respond_contact('Veuillez saisir une adresse e-mail valide.');
 }
 
 $clean_name = htmlspecialchars($name, ENT_QUOTES, 'UTF-8');
@@ -178,9 +262,9 @@ try {
   $mailer->AltBody = $alt_body;
   $mailer->send();
 
-  redirect_contact('success', 'Votre message a ete envoye avec succes. Notre equipe vous repondra rapidement.');
+  respond_contact('OK');
 } catch (Exception $e) {
   log_mail_error('Erreur PHPMailer : ' . $e->getMessage());
-  redirect_contact('error', 'Votre message n a pas pu etre envoye pour le moment. Veuillez reessayer plus tard.');
+  respond_contact('Une erreur est survenue lors de l envoi du message. Veuillez reessayer.');
 }
 ?>

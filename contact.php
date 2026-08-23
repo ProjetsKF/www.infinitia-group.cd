@@ -3,6 +3,8 @@ if (session_status() == PHP_SESSION_NONE) {
   session_start();
 }
 
+require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . 'config' . DIRECTORY_SEPARATOR . 'turnstile.php';
+
 $currentPage = 'contact';
 $contact_success = '';
 $contact_error = '';
@@ -95,7 +97,7 @@ if (isset($_SESSION['contact_error'])) {
                   <div class="alert alert-danger" role="alert"><?php echo htmlspecialchars($contact_error, ENT_QUOTES, 'UTF-8'); ?></div>
                 <?php } ?>
 
-                <form action="mail.php" method="post" class="contact-form">
+                <form action="mail.php" method="post" class="contact-form php-email-form">
                   <div class="row gy-3">
                     <div class="col-md-4">
                       <div class="input-group-custom">
@@ -126,7 +128,14 @@ if (isset($_SESSION['contact_error'])) {
                     </div>
                   </div>
 
+                  <div class="cf-turnstile" data-sitekey="<?php echo htmlspecialchars(TURNSTILE_SITE_KEY, ENT_QUOTES, 'UTF-8'); ?>"></div>
+
                   <div class="form-footer">
+                    <div class="form-messages">
+                      <div class="loading">Envoi en cours...</div>
+                      <div class="error-message"></div>
+                      <div class="sent-message">Votre message a ete envoye avec succes. Notre equipe vous repondra rapidement.</div>
+                    </div>
                     <button type="submit" class="btn-submit">
                       <i class="bi bi-rocket-takeoff"></i>
                       <span>Envoyer le message</span>
@@ -171,6 +180,7 @@ if (isset($_SESSION['contact_error'])) {
   <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
   <div id="preloader"></div>
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
   <script src="assets/vendor/php-email-form/validate.js"></script>
   <script src="assets/vendor/aos/aos.js"></script>
   <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>

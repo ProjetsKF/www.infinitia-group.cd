@@ -1,0 +1,2 @@
+# Configuration Cloudflare Turnstile contenant la clé secrète
+/config/turnstile.php

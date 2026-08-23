@@ -49,7 +49,7 @@ $currentPage = 'accueil';
                             <div class="hero-actions">
                                 <a href="services.php" class="hero-btn hero-btn-primary">Découvrir nos solutions</a>
                                 <a href="contact.php" class="hero-btn hero-btn-secondary">Nous contacter</a>
-                                <a href="#" target="_blank" rel="noopener" class="hero-btn hero-btn-care">
+                                <a href="https://care.infinitia-group.com/" target="_blank" rel="noopener" class="hero-btn hero-btn-care">
                                     <i class="bi bi-person-workspace"></i>
                                     <span>Accéder à INFINITIA Care Services</span>
                                 </a>

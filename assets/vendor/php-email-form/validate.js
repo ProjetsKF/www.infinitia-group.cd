@@ -66,7 +66,10 @@
       thisForm.querySelector('.loading').classList.remove('d-block');
       if (data.trim() == 'OK') {
         thisForm.querySelector('.sent-message').classList.add('d-block');
-        thisForm.reset(); 
+        thisForm.reset();
+        if (typeof turnstile !== "undefined") {
+          turnstile.reset();
+        }
       } else {
         throw new Error(data ? data : 'Form submission failed and no error message returned from: ' + action); 
       }
@@ -78,8 +81,20 @@
 
   function displayError(thisForm, error) {
     thisForm.querySelector('.loading').classList.remove('d-block');
-    thisForm.querySelector('.error-message').innerHTML = error;
+    let message = error && error.message
+      ? error.message
+      : 'Une erreur est survenue lors de l envoi du message. Veuillez reessayer.';
+
+    if (/^\d{3}\s/.test(message) || message == 'Failed to fetch') {
+      message = 'Une erreur est survenue lors de l envoi du message. Veuillez reessayer.';
+    }
+
+    thisForm.querySelector('.error-message').textContent = message;
     thisForm.querySelector('.error-message').classList.add('d-block');
+
+    if (typeof turnstile !== "undefined") {
+      turnstile.reset();
+    }
   }
 
 })();
