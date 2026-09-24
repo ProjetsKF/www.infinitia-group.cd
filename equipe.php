@@ -326,11 +326,10 @@ $currentPage = 'equipe';
                     <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
                         <article class="team-member-card">
                             <div class="member-photo">
-                                <img src="assets/img/Francky.jpeg" class="img-fluid" alt="FRANCKY SABITI">
+                                <img src="assets/img/user.PNG" class="img-fluid" alt="Responsable informatique">
                             </div>
                             <div class="member-content">
                                 <span class="team-badge"><i class="bi bi-cpu"></i> IT Manager</span>
-                                <h4>FRANCKY SABITI</h4>
                                 <span class="member-role">Responsable Informatique (IT Manager) et Chargé des Programmes</span>
                                 <p class="member-description">
                                     Responsable informatique d’INFINITIA GROUP SARLU, il conçoit et développe les plateformes numériques de l’entreprise, assure la maintenance technique du site web et des applications, gère les bases de données, veille à la sécurité des systèmes et participe à la planification des activités stratégiques.
