@@ -13,7 +13,7 @@ Options -Indexes -MultiViews
 
     # Protections des dossiers et fichiers sensibles.
     RewriteRule (^|/)\.git(/|$) - [F,L,NC]
-    RewriteRule ^(config|vendor|logs)(/|$) - [F,L,NC]
+    RewriteRule ^(config|vendor|logs|database|includes|tools)(/|$) - [F,L,NC]
     RewriteRule (^|/)\.(?!well-known/) - [F,L,NC]
     RewriteRule ^(composer\.(json|lock)|Readme\.txt)$ - [F,L,NC]
 

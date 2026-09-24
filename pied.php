@@ -37,6 +37,8 @@
           <ul>
             <li><a href="a-propos.php"><i class="bi bi-chevron-right"></i> A propos</a></li>
             <li><a href="services.php"><i class="bi bi-chevron-right"></i> Services</a></li>
+            <li><a href="formations.php"><i class="bi bi-chevron-right"></i> Formations</a></li>
+            <li><a href="admin/login.php"><i class="bi bi-chevron-right"></i> Espace Admin</a></li>
             <li><a href="solutions.php"><i class="bi bi-chevron-right"></i> Solutions</a></li>
             <li><a href="projets.php"><i class="bi bi-chevron-right"></i> Projets</a></li>
             <li><a href="contact.php"><i class="bi bi-chevron-right"></i> Contact</a></li>

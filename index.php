@@ -139,6 +139,12 @@ $currentPage = 'accueil';
                     <div class="col-lg-3 col-md-4 col-sm-6"><div class="p-3 border rounded-3 h-100"><i class="bi bi-tree"></i> Environnement</div></div>
                     <div class="col-lg-3 col-md-4 col-sm-6"><div class="p-3 border rounded-3 h-100"><i class="bi bi-bus-front"></i> Transport</div></div>
                     <div class="col-lg-3 col-md-4 col-sm-6"><div class="p-3 border rounded-3 h-100"><i class="bi bi-lightning-charge"></i> Énergie</div></div>
+                    <div class="col-lg-6 col-md-8">
+                        <a href="formations.php" class="d-block p-3 border rounded-3 h-100 text-decoration-none">
+                            <h3 class="h6 mb-2"><i class="bi bi-mortarboard"></i> Formation &amp; Développement des compétences</h3>
+                            <p class="mb-0 text-body">Des programmes pratiques pour développer les compétences numériques et techniques des particuliers, professionnels et organisations.</p>
+                        </a>
+                    </div>
                 </div>
             </div>
         </section>

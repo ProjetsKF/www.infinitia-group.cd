@@ -73,6 +73,7 @@ $projetsPages = array(
             <li><a href="<?php echo infinitia_url_html('/agriculture-digitale'); ?>"<?php echo infinitiaMenuClass('agriculture-digitale', $currentPage); ?>>Agriculture digitale</a></li>
           </ul>
         </li>
+        <li><a href="<?php echo infinitia_url_html('/formations'); ?>"<?php echo infinitiaMenuClass('formations', $currentPage); ?>>Formations</a></li>
         <li><a href="<?php echo infinitia_url_html('/solutions'); ?>"<?php echo infinitiaMenuClass('solutions', $currentPage); ?>>Solutions</a></li>
         <li class="dropdown">
           <a href="<?php echo infinitia_url_html('/projets'); ?>"<?php echo infinitiaMenuParentClass($projetsPages, $currentPage); ?>><span>Projets</span> <i class="bi bi-chevron-down toggle-dropdown" role="button" tabindex="0" aria-label="Ouvrir le sous-menu Projets"></i></a>
